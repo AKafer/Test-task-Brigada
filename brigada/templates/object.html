@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+    </head>
+  <body>
+    <h1>Объекты бригады {{ brigada.name }}:</h1>
+      {% for object in objects %}
+        <h3>{{ object.name }}</h3>
+        <p>Описание: {{ object.description }}</p>
+      {% endfor %}
+  </body>
+</html>

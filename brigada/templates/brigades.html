@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+    </head>
+  <body>
+    <h1>Бригады в городе {{ city.name }}:</h1>
+      {% for brigada in brigades %}
+        <h3><span><a href="{% url 'space_objects:objects' brigada %}">{{ brigada.name }}</a></span></h3>
+        <p>Начальник: {{ brigada.head }}</p>
+        <p>Численность: {{ brigada.amount_people }}</p>
+        <p>Средняя квалификация (разряд): {{ brigada.qualification }}</p>
+      {% endfor %}
+  </body>
+</html>

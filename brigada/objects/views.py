@@ -3,12 +3,19 @@ from django.http import HttpResponse
 from .models import City, Brigada, Object
 
 
+def index(request):
+    return render(request, 'index.html')
+
 def city(request):
     cities = City.objects.all()
+    brigades = Brigada.objects.all()
+    objects = Object.objects.all()
     context = {
-        'cities': cities
+        'cities': cities,
+        'brigades': brigades,
+        'objects': objects,
     }
-    return render(request, 'index.html', context)
+    return render(request, 'index2.html', context)
 
 def brigada(request, city):
     city = get_object_or_404(City, name=city)

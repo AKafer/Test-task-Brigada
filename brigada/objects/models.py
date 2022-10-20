@@ -42,11 +42,13 @@ class Object(models.Model):
             verbose_name='Объект',
             help_text='Название объкта'
         )
-        description = models.TextField(
+        head = models.CharField(
             max_length=100,
-            verbose_name='Описание работ',
-            help_text='Описание работ на объекте'
+            verbose_name='Начальник',
+            help_text='ФИО начальника'
         )
+        amount_people = models.IntegerField()
+        qualification = models.IntegerField()
         brigada = models.ForeignKey(
             Brigada,
             on_delete=models.CASCADE,

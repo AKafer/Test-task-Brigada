@@ -1,13 +1,133 @@
 <!DOCTYPE html>
 <html lang="ru">
-  <head>
-    {% load static %}
-    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
-    </head>
-  <body>
-    <h1>Города присутствия:</h1>
-      {% for city in cities %}
-        <h3><span><a href="{% url 'space_objects:brigades' city %}">{{ city.name }}</a></span></h3>
-      {% endfor %}
-  </body>
+
+<head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+</head>
+
+<body>
+<script>
+$(document).ready(function() {
+    var sel1 = $('#sel1');
+    var sel2 = $('#sel2');
+    var sel3 = $('#sel3');
+
+
+    sel1.change(function() {
+        var opt = $(this).val();
+        $('#name').html("");
+        $('#head').html("");
+        $('#amount_people').html("");
+        $('#qualification').html("");
+        sel2.empty();
+        sel2.append(`<option value="0">-------------------------</option>`);
+        sel3.empty();
+        sel3.append(`<option value="0">-------------------------</option>`);
+        $.ajax({
+            type: 'GET',
+            url: 'http://127.0.0.1:8000/api/brigades/from_city/' + opt,
+            success: function(response) {
+                for (let i = 0; i < response.length; i++) {
+                    var brigada_id = response[i].id;
+                    var brigada_name = response[i].name;
+                    sel2.append(`<option value="${brigada_id}">${brigada_name}</option>`);
+                }
+            }
+        });
+    });
+
+    sel2.change(function() {
+        var opt = $(this).val();
+        $('#name').html("");
+        $('#head').html("");
+        $('#amount_people').html("");
+        $('#qualification').html("");
+        sel3.empty();
+        sel3.append(`<option value="0">-------------------------</option>`);
+        $.ajax({
+            type: 'GET',
+            url: 'http://127.0.0.1:8000/api/objects/from_brigada/' + opt,
+            success: function(response) {
+                for (let i = 0; i < response.length; i++) {
+                    var object_id = response[i].id;
+                    var object_name = response[i].name;
+                    sel3.append(`<option value="${object_id}">${object_name}</option>`);
+                }
+            }
+        });
+        $.ajax({
+            type: 'GET',
+            url: 'http://127.0.0.1:8000/api/brigades/' + opt,
+            success: function(response) {
+                $('#name').html(response.name);
+                $('#head').html(response.head);
+                $('#amount_people').html(response.amount_people);
+                $('#qualification').html(response.qualification);
+                name = response.name;
+                head = response.head;
+                amount_people = response.amount_people;
+                qualification = response.qualification;
+            }
+        });
+    });
+
+    sel3.change(function() {
+        var opt = $(this).val();
+        $('#name').html(name);
+        $('#head').html(head);
+        $('#amount_people').html(amount_people);
+        $('#qualification').html(qualification);
+        $.ajax({
+            type: 'GET',
+            url: 'http://127.0.0.1:8000/api/objects/' + opt,
+            success: function(response) {
+                $('#name').html(response.name);
+                $('#head').html(response.head);
+                $('#amount_people').html(response.amount_people);
+                $('#qualification').html(response.qualification);;
+            }
+        });
+    });
+
+    var name;
+    var head;
+    var amount_people;
+    var qualification;
+    sel1.append(`<option value="0">-------------------------</option>`);
+    sel2.append(`<option value="0">-------------------------</option>`);
+    sel3.append(`<option value="0">-------------------------</option>`);
+    $.ajax({
+        type: 'GET',
+        url: 'http://127.0.0.1:8000/api/cities/',
+        success: function(response) {
+            for (let i = 0; i < response.length; i++) {
+                var city_id = response[i].id;
+                var city_name = response[i].name;
+                sel1.append(`<option value="${city_id}">${city_name}</option>`);
+            }
+        }
+    });
+
+});
+</script>
+    <p style="font-size: 25px;"> Город:
+        <select id="sel1" style="font-size: 25px;">
+        </select>
+    </p>
+    <p style="font-size: 25px;"> Бригада:
+        <select id="sel2" style="font-size: 25px;">
+        </select>
+    </p>
+    <p style="font-size: 25px;"> Подбригада:
+        <select id="sel3" style="font-size: 25px;">
+        </select>
+    </p>
+    <p>
+    <h3 style="border: 3px solid blue; padding: 10px";>Наименование: <span id="name"></span></h3>
+    <h3 style="border: 3px solid blue; padding: 10px";>Начальник: <span id="head"></span></h3>
+    <h3 style="border: 3px solid blue; padding: 10px";>Число людей: <span id="amount_people"></span></h3>
+    <h3 style="border: 3px solid blue; padding: 10px";>Квалификация: <span id="qualification"></span></h3>
+    </p>
+</script>
+</body>
 </html>

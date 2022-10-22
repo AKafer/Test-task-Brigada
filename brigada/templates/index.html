@@ -11,10 +11,15 @@ $(document).ready(function() {
     var sel1 = $('#sel1');
     var sel2 = $('#sel2');
     var sel3 = $('#sel3');
+    var opt1 = localStorage.getItem('opt1')
+    var opt2 = localStorage.getItem('opt2')
+    var opt3 = localStorage.getItem('opt3')
 
 
     sel1.change(function() {
-        var opt = $(this).val();
+        var flag = 0
+        opt1 = $(this).val();
+        localStorage.setItem('opt1', opt1);
         $('#name').html("");
         $('#head').html("");
         $('#amount_people').html("");
@@ -25,19 +30,28 @@ $(document).ready(function() {
         sel3.append(`<option value="0">-------------------------</option>`);
         $.ajax({
             type: 'GET',
-            url: 'http://127.0.0.1:8000/api/brigades/from_city/' + opt,
+            url: 'http://127.0.0.1:8000/api/brigades/from_city/' + opt1,
             success: function(response) {
                 for (let i = 0; i < response.length; i++) {
                     var brigada_id = response[i].id;
                     var brigada_name = response[i].name;
                     sel2.append(`<option value="${brigada_id}">${brigada_name}</option>`);
+                    if (brigada_id == opt2) {
+                      flag = 1;
+                    }
+                }
+                if (flag == 1) {
+                    sel2.val(opt2);
+                    console.log(sel2.change());
                 }
             }
         });
     });
 
     sel2.change(function() {
-        var opt = $(this).val();
+        var flag = 0
+        opt2 = $(this).val()
+        localStorage.setItem('opt2', opt2);
         $('#name').html("");
         $('#head').html("");
         $('#amount_people').html("");
@@ -46,18 +60,25 @@ $(document).ready(function() {
         sel3.append(`<option value="0">-------------------------</option>`);
         $.ajax({
             type: 'GET',
-            url: 'http://127.0.0.1:8000/api/objects/from_brigada/' + opt,
+            url: 'http://127.0.0.1:8000/api/objects/from_brigada/' + opt2,
             success: function(response) {
                 for (let i = 0; i < response.length; i++) {
                     var object_id = response[i].id;
                     var object_name = response[i].name;
                     sel3.append(`<option value="${object_id}">${object_name}</option>`);
+                    if (object_id == opt3) {
+                      flag = 1;
+                    }
+                }
+                if (flag == 1) {
+                    sel3.val(opt3);
+                    sel3.change();
                 }
             }
         });
         $.ajax({
             type: 'GET',
-            url: 'http://127.0.0.1:8000/api/brigades/' + opt,
+            url: 'http://127.0.0.1:8000/api/brigades/' + opt2,
             success: function(response) {
                 $('#name').html(response.name);
                 $('#head').html(response.head);
@@ -72,14 +93,15 @@ $(document).ready(function() {
     });
 
     sel3.change(function() {
-        var opt = $(this).val();
+        opt3 = $(this).val();
+        localStorage.setItem('opt3', opt3);
         $('#name').html(name);
         $('#head').html(head);
         $('#amount_people').html(amount_people);
         $('#qualification').html(qualification);
         $.ajax({
             type: 'GET',
-            url: 'http://127.0.0.1:8000/api/objects/' + opt,
+            url: 'http://127.0.0.1:8000/api/objects/' + opt3,
             success: function(response) {
                 $('#name').html(response.name);
                 $('#head').html(response.head);
@@ -105,9 +127,10 @@ $(document).ready(function() {
                 var city_name = response[i].name;
                 sel1.append(`<option value="${city_id}">${city_name}</option>`);
             }
+            sel1.val(opt1);
+            sel1.change();
         }
     });
-
 });
 </script>
     <p style="font-size: 25px;"> Город:

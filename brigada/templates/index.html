@@ -2,6 +2,24 @@
 <html lang="ru">
 
 <head>
+    <title>Бригада</title>
+    <style>
+    body {
+      background-color: #FDF4E3;
+    }
+    .ramka {
+      border: 3px solid blue;
+      padding: 10px;
+      background-color: #FAE7B5;
+    }
+    .name_sel {
+      font-size: 25px
+    }
+    .sel {
+      font-size: 25px;
+      background-color: #FAEEDD;
+    }
+  </style>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
 </head>
 
@@ -133,23 +151,23 @@ $(document).ready(function() {
     });
 });
 </script>
-    <p style="font-size: 25px;"> Город:
-        <select id="sel1" style="font-size: 25px;">
+    <p class="name_sel"> Город:
+        <select id="sel1" class="sel">
         </select>
     </p>
-    <p style="font-size: 25px;"> Бригада:
-        <select id="sel2" style="font-size: 25px;">
+    <p class="name_sel"> Бригада:
+        <select id="sel2" class="sel">
         </select>
     </p>
-    <p style="font-size: 25px;"> Подбригада:
-        <select id="sel3" style="font-size: 25px;">
+    <p class="name_sel"> Подбригада:
+        <select id="sel3" class="sel">
         </select>
     </p>
     <p>
-    <h3 style="border: 3px solid blue; padding: 10px";>Наименование: <span id="name"></span></h3>
-    <h3 style="border: 3px solid blue; padding: 10px";>Начальник: <span id="head"></span></h3>
-    <h3 style="border: 3px solid blue; padding: 10px";>Число людей: <span id="amount_people"></span></h3>
-    <h3 style="border: 3px solid blue; padding: 10px";>Квалификация: <span id="qualification"></span></h3>
+    <h3 class="ramka">Наименование: <span id="name"></span></h3>
+    <h3 class="ramka">Начальник: <span id="head"></span></h3>
+    <h3 class="ramka";>Число людей: <span id="amount_people"></span></h3>
+    <h3 class="ramka">Квалификация: <span id="qualification"></span></h3>
     </p>
 </script>
 </body>

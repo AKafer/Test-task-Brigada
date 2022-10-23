@@ -1,6 +1,5 @@
-from django.db import models
-
 from django.core.validators import MaxValueValidator, MinValueValidator
+from django.db import models
 
 
 class City(models.Model):
@@ -38,29 +37,29 @@ class Brigada(models.Model):
     def __str__(self):
         return self.name
 
+
 class Object(models.Model):
-        name = models.CharField(
-            max_length=50,
-            verbose_name='Объект',
-            help_text='Название объкта'
-        )
-        head = models.CharField(
-            max_length=100,
-            verbose_name='Начальник',
-            help_text='ФИО начальника'
-        )
-        amount_people = models.IntegerField(
-            validators=[MinValueValidator(1), MaxValueValidator(15)]
-        )
-        qualification = models.IntegerField()
-        brigada = models.ForeignKey(
-            Brigada,
-            on_delete=models.CASCADE,
-            related_name='brigada',
-            verbose_name='бригада',
-            help_text='Определите бригаду'
-        )
+    name = models.CharField(
+        max_length=50,
+        verbose_name='Объект',
+        help_text='Название объкта'
+    )
+    head = models.CharField(
+        max_length=100,
+        verbose_name='Начальник',
+        help_text='ФИО начальника'
+    )
+    amount_people = models.IntegerField(
+        validators=[MinValueValidator(1), MaxValueValidator(15)]
+    )
+    qualification = models.IntegerField()
+    brigada = models.ForeignKey(
+        Brigada,
+        on_delete=models.CASCADE,
+        related_name='brigada',
+        verbose_name='бригада',
+        help_text='Определите бригаду'
+    )
 
-        def __str__(self):
-            return self.name
-
+    def __str__(self):
+        return self.name

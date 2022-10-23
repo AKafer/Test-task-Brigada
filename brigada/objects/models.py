@@ -1,5 +1,7 @@
 from django.db import models
 
+from django.core.validators import MaxValueValidator, MinValueValidator
+
 
 class City(models.Model):
     name = models.CharField(
@@ -47,7 +49,9 @@ class Object(models.Model):
             verbose_name='Начальник',
             help_text='ФИО начальника'
         )
-        amount_people = models.IntegerField()
+        amount_people = models.IntegerField(
+            validators=[MinValueValidator(1), MaxValueValidator(15)]
+        )
         qualification = models.IntegerField()
         brigada = models.ForeignKey(
             Brigada,

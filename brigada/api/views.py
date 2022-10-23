@@ -8,12 +8,10 @@ from .serializers import CitySerializer, BrigadaSerializer, ObjectSerializer
 
 
 class CityViewSet(viewsets.ModelViewSet):
-    """Класс представления цветовых тэгов."""
     queryset = City.objects.all()
     serializer_class = CitySerializer
 
 class BrigadaViewSet(viewsets.ModelViewSet):
-    """Класс представления цветовых тэгов."""
     queryset = Brigada.objects.all()
     serializer_class = BrigadaSerializer
 
@@ -25,7 +23,6 @@ class BrigadaViewSet(viewsets.ModelViewSet):
         return Response(serializer.data, status=status.HTTP_200_OK)
 
 class ObjectViewSet(viewsets.ModelViewSet):
-    """Класс представления цветовых тэгов."""
     queryset = Object.objects.all()
     serializer_class = ObjectSerializer
 

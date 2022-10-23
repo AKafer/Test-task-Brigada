@@ -1,14 +1,14 @@
 $(document).ready(function() {
-    var sel1 = $('#sel1');
-    var sel2 = $('#sel2');
-    var sel3 = $('#sel3');
-    var opt1 = localStorage.getItem('opt1')
-    var opt2 = localStorage.getItem('opt2')
-    var opt3 = localStorage.getItem('opt3')
+    let sel1 = $('#sel1');
+    let sel2 = $('#sel2');
+    let sel3 = $('#sel3');
+    let opt1 = localStorage.getItem('opt1')
+    let opt2 = localStorage.getItem('opt2')
+    let opt3 = localStorage.getItem('opt3')
 
 
     sel1.change(function() {
-        var flag = 0
+        let flag = 0
         opt1 = $(this).val();
         localStorage.setItem('opt1', opt1);
         $('#name').html("");
@@ -24,8 +24,8 @@ $(document).ready(function() {
             url: 'api/brigades/from_city/' + opt1,
             success: function(response) {
                 for (let i = 0; i < response.length; i++) {
-                    var brigada_id = response[i].id;
-                    var brigada_name = response[i].name;
+                    let brigada_id = response[i].id;
+                    let brigada_name = response[i].name;
                     sel2.append(`<option value="${brigada_id}">${brigada_name}</option>`);
                     if (brigada_id == opt2) {
                       flag = 1;
@@ -40,7 +40,7 @@ $(document).ready(function() {
     });
 
     sel2.change(function() {
-        var flag = 0
+        let flag = 0
         opt2 = $(this).val()
         localStorage.setItem('opt2', opt2);
         $('#name').html("");
@@ -54,8 +54,8 @@ $(document).ready(function() {
             url: 'api/objects/from_brigada/' + opt2,
             success: function(response) {
                 for (let i = 0; i < response.length; i++) {
-                    var object_id = response[i].id;
-                    var object_name = response[i].name;
+                    let object_id = response[i].id;
+                    let object_name = response[i].name;
                     sel3.append(`<option value="${object_id}">${object_name}</option>`);
                     if (object_id == opt3) {
                       flag = 1;
@@ -102,10 +102,10 @@ $(document).ready(function() {
         });
     });
 
-    var name;
-    var head;
-    var amount_people;
-    var qualification;
+    let name;
+    let head;
+    let amount_people;
+    let qualification;
     sel1.append(`<option value="0">-Выбрать-</option>`);
     sel2.append(`<option value="0">-Выбрать-</option>`);
     sel3.append(`<option value="0">-Выбрать-</option>`);
@@ -113,8 +113,8 @@ $(document).ready(function() {
         url:  'api/cities/',
         success: function(response) {
             for (let i = 0; i < response.length; i++) {
-                var city_id = response[i].id;
-                var city_name = response[i].name;
+                let city_id = response[i].id;
+                let city_name = response[i].name;
                 sel1.append(`<option value="${city_id}">${city_name}</option>`);
             }
             sel1.val(opt1);

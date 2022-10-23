@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="ru">
-{% load static %}
+
 <head>
     <title>Бригада</title>
     <style>
@@ -20,8 +20,9 @@
       background-color: #FAEEDD;
     }
   </style>
-    <script src={% static "js/jquery-3.6.1.js" %}></script>
-    <script src={% static "js/index.js" %}></script>
+    {% load static %}
+    <script type="text/javascript" src={% static "js/jquery-3.6.1.js" %}></script>
+    <script type="text/javascript" src={% static "js/index.js" %}></script>
 
 </head>
 

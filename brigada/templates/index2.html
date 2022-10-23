@@ -7,10 +7,8 @@
     </head>
   <body>
     <h1>Главная страница:</h1>
-
       {% for city in cities %}
         <h3><span><a href="{% url 'space_objects:brigades' city %}">{{ city.name }}</a></span></h3>
       {% endfor %}
-
-   </body>
+  </body>
 </html>

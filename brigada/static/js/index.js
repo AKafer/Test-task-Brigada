@@ -16,9 +16,9 @@ $(document).ready(function() {
         $('#amount_people').html("");
         $('#qualification').html("");
         sel2.empty();
-        sel2.append(`<option value="0">-------------------------</option>`);
+        sel2.append(`<option value="0">-Выбрать-</option>`);
         sel3.empty();
-        sel3.append(`<option value="0">-------------------------</option>`);
+        sel3.append(`<option value="0">-Выбрать-</option>`);
         $.ajax({
             type: 'GET',
             url: 'api/brigades/from_city/' + opt1,
@@ -48,7 +48,7 @@ $(document).ready(function() {
         $('#amount_people').html("");
         $('#qualification').html("");
         sel3.empty();
-        sel3.append(`<option value="0">-------------------------</option>`);
+        sel3.append(`<option value="0">-Выбрать-</option>`);
         $.ajax({
             type: 'GET',
             url: 'api/objects/from_brigada/' + opt2,
@@ -106,9 +106,9 @@ $(document).ready(function() {
     var head;
     var amount_people;
     var qualification;
-    sel1.append(`<option value="0">-------------------------</option>`);
-    sel2.append(`<option value="0">-------------------------</option>`);
-    sel3.append(`<option value="0">-------------------------</option>`);
+    sel1.append(`<option value="0">-Выбрать-</option>`);
+    sel2.append(`<option value="0">-Выбрать-</option>`);
+    sel3.append(`<option value="0">-Выбрать-</option>`);
     $.ajax({
         url:  'api/cities/',
         success: function(response) {

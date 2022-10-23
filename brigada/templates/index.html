@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="ru">
-
+{% load static %}
 <head>
     <title>Бригада</title>
     <style>
@@ -20,16 +20,12 @@
       background-color: #FAEEDD;
     }
   </style>
-    {% load static %}
-    <script type="text/javascript" src={% static "js/jquery-3.6.1.js" %}></script>
-    <script type="text/javascript" src={% static "js/index.js" %}></script>
+    <script src={% static "js/jquery-3.6.1.js" %}></script>
+    <script src={% static "js/index.js" %}></script>
 
 </head>
 
 <body>
-<script>
-
-</script>
     <p class="name_sel"> Город:
         <select id="sel1" class="sel">
         </select>
@@ -48,6 +44,5 @@
     <h3 class="ramka">Число людей: <span id="amount_people"></span></h3>
     <h3 class="ramka">Квалификация: <span id="qualification"></span></h3>
     </p>
-</script>
 </body>
 </html>

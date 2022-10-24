@@ -23,13 +23,15 @@
     {% load static %}
     <script type="text/javascript" src={% static "js/jquery-3.6.1.js" %}></script>
     <script type="text/javascript" src={% static "js/index.js" %}></script>
+    <link rel="icon" href={% static "img/fav/favicon.ico" %} type="image">
+    <link rel="apple-touch-icon" sizes="180x180" href={% static "img/fav/apple-touch-icon.png" %}>
+    <link rel="icon" type="image/png" sizes="32x32" href={% static "img/fav/favicon-32x32.png" %}>
+    <link rel="icon" type="image/png" sizes="16x16" href={% static "img/fav/favicon-16x16.png" %}>
+    <link rel="manifest" href={% static "img/fav/site.webmanifest" %}>
 
 </head>
 
 <body>
-<script>
-
-</script>
     <p class="name_sel"> Город:
         <select id="sel1" class="sel">
         </select>
@@ -48,6 +50,5 @@
     <h3 class="ramka">Число людей: <span id="amount_people"></span></h3>
     <h3 class="ramka">Квалификация: <span id="qualification"></span></h3>
     </p>
-</script>
 </body>
 </html>

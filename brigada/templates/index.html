@@ -1,34 +1,9 @@
 <!DOCTYPE html>
 <html lang="ru">
-
+{% load static %}
 <head>
-    <title>Бригада</title>
-    <style>
-    body {
-      background-color: #FDF4E3;
-    }
-    .ramka {
-      border: 3px solid blue;
-      padding: 10px;
-      background-color: #FAE7B5;
-    }
-    .name_sel {
-      font-size: 25px
-    }
-    .sel {
-      font-size: 25px;
-      background-color: #FAEEDD;
-    }
-  </style>
-    {% load static %}
-    <script type="text/javascript" src={% static "js/jquery-3.6.1.js" %}></script>
-    <script type="text/javascript" src={% static "js/index.js" %}></script>
-    <link rel="icon" href={% static "img/fav/favicon.ico" %} type="image">
-    <link rel="apple-touch-icon" sizes="180x180" href={% static "img/fav/apple-touch-icon.png" %}>
-    <link rel="icon" type="image/png" sizes="32x32" href={% static "img/fav/favicon-32x32.png" %}>
-    <link rel="icon" type="image/png" sizes="16x16" href={% static "img/fav/favicon-16x16.png" %}>
-    <link rel="manifest" href={% static "img/fav/site.webmanifest" %}>
-
+  <title>Бригада</title>
+  <link href="{% static 'css/my_style.css' %}" rel="stylesheet">
 </head>
 
 <body>
@@ -51,4 +26,6 @@
     <h3 class="ramka">Квалификация: <span id="qualification"></span></h3>
     </p>
 </body>
+<script src="{% static 'js/jquery-3.6.1.js' %}"></script>
+<script src="{% static 'js/index.js' %}"></script>
 </html>

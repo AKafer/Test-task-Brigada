@@ -20,6 +20,8 @@ def city(request):
 
 
 def brigada(request, city):
+    """Добавить докстринги."""
+
     city = get_object_or_404(City, name=city)
     brigades = Brigada.objects.filter(city=city)
     context = {
